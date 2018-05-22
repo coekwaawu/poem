@@ -57,11 +57,7 @@ class TagViewSet(viewsets.ModelViewSet):
     search_fields = ('name', )
     ordering_fields = ('number_of_poems', 'name', )
 
-    '''
-    def get_queryset(self):
-        queryset = Tag.objects.annotate(Count('poems'))
-        return queryset.order_by()
-    '''
+
 
 @api_view(['GET'])
 def api_root(request, format=None):

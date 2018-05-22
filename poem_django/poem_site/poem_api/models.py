@@ -136,11 +136,7 @@ class Poem(models.Model):
 
     class Meta:
         managed = True
-        ordering = ('created',)
         db_table = 'poem'
-
-    def __str__(self):
-        return self.title
 
 
 class Tag(models.Model):
@@ -162,8 +158,5 @@ class PoemTag(models.Model):
 
     class Meta:
         db_table = "poem_tag_relationship"
-
-    def __str__(self):
-        return self.tag.name
 
 
