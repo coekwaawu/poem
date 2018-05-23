@@ -51,12 +51,11 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.annotate(number_of_poems=Count('poems'))
+    queryset = Tag.objects.annotate(number_of_poems=Count('poem'))
     serializer_class = TagSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     search_fields = ('name', )
     ordering_fields = ('number_of_poems', 'name', )
-
 
 
 @api_view(['GET'])
