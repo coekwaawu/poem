@@ -76,7 +76,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1252">
+            <state relative-caret-position="92">
               <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
             </state>
           </provider>
@@ -177,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
@@ -194,31 +194,6 @@
             <path>
               <item name="poem" type="b2602c69:ProjectViewProjectNode" />
               <item name="poem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poem" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_django" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poem" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_django" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poem" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_django" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poem" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_django" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poem" type="b2602c69:ProjectViewProjectNode" />
@@ -300,8 +275,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="960" height="1040" extended-state="1" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23728813" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -576,7 +550,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1252">
+        <state relative-caret-position="92">
           <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
         </state>
       </provider>
