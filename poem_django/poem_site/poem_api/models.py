@@ -151,6 +151,9 @@ class Poem(models.Model):
         managed = True
         db_table = 'poem'
 
+    def __str__(self):
+        return self.title
+
 
 class PoemTag(models.Model):
     poem = models.ForeignKey(Poem, on_delete=models.CASCADE)
@@ -158,5 +161,8 @@ class PoemTag(models.Model):
 
     class Meta:
         db_table = "poem_tag_relationship"
+
+    def __str__(self):
+        return self.poem.title+'-'+self.tag.name
 
 

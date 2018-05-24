@@ -12,6 +12,8 @@ class TagSerializer(serializers.ModelSerializer):
 
 class PoemSerializer(serializers.ModelSerializer):
 
+    tags = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Poem
         fields = ('url', 'poem_id', 'title', 'dynasty', 'author', 'content', 'yi', 'zhu',

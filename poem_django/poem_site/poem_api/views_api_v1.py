@@ -21,7 +21,7 @@ from poem_api.serializers import TagSerializer
 class PoemViewSet(viewsets.ModelViewSet):
     queryset = Poem.objects.all()
     serializer_class = PoemSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     search_fields = ('title', 'author', 'content')
     ordering_fields = ('title', 'author', 'dynasty')
@@ -51,7 +51,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.annotate(number_of_poems=Count('poem'))
+    queryset = Tag.objects.all().annotate(number_of_poems=Count('poem'))
     serializer_class = TagSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     search_fields = ('name', )
