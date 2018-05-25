@@ -20,7 +20,6 @@ urlpatterns = [
     path('api/', include('poem_api.urls_api')),
     path('api/v1/', include('poem_api.urls_api_v1')),
     path('api/v2/', include('drf_openapi.urls')),
-    path('api/docs/', include('rest_framework_docs.urls')),
     path('poem/', include('poem_api.urls_poem')),
     path('admin/', admin.site.urls),
 ]

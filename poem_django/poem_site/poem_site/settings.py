@@ -41,9 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'rest_framework',
-    'rest_framework_docs',
     'crispy_forms',
-    'drf_openapi',
     'apps.core.pagination',
 ]
 
@@ -163,9 +161,4 @@ REST_FRAMEWORK = {
     #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.PoemPagination',
     'PAGE_SIZE': 10,
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-}
-
-REST_FRAMEWORK_DOCS = {
-    'HIDE_DOCS': False
 }
