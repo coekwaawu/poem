@@ -1,5 +1,6 @@
 import MySQLdb
 import time
+import re
 from poem_web import get_remove_copyright_poem_by_id
 from poem_web import remove_copyright_string
 from poem_web_csv import get_poem_from_csv
@@ -193,11 +194,68 @@ def get_poem_ids_which_yizhushang_is_not_complete():
     return poem_ids
 
 
+def remove_content_yi_zhu_shang_html_tag_and_return_array(str):
+    pattern1 = re.compile('<br />|\n|<p.*?>|</p>|<div.*?>|</div>|<span.+?>|</span>')
+    remove_htmltag_with_special_character = re.sub(pattern1, '&', str)
+    pattern4 = re.compile('&\([a-z].*?\)&')
+    str4 = re.sub(pattern4, '', remove_htmltag_with_special_character)
+    pattern2 = re.compile('&{1,}')
+    split_sentence_with_special_character = re.sub(pattern2, '&', str4)
+    pattern3 = re.compile('&[0-9]{1,}、')
+    str3 = re.sub(pattern3, '', split_sentence_with_special_character)
+    array = re.split('&', str3)
+    for item in array:
+        if item == '':
+            array.remove(item)
+    return array
+
+
+def insert_table_poem_content(poem_ids):
+    db = get_mysql_db()
+    cur = db.cursor()
+    for poem_id in poem_ids:
+        poem = get_poem_by_id_from_mysql(poem_id)
+        content_array = remove_content_yi_zhu_shang_html_tag_and_return_array(poem['content'])
+        order_number = 1
+        for content in content_array:
+            sql = "INSERT INTO poem_content (poem_id, content, order_number) VALUES (\'{}\', \'{}\', \'{}\')"\
+                .format(poem_id, content, order_number)
+            try:
+                cur.execute(sql)
+                db.commit()
+                print("Success! poem_id:{}, content:{}, order_number:{}".format(poem_id, content, order_number))
+            except Exception as e:
+                db.rollback()
+                print(e)
+                print("错误! poem_id:{}, content:{}, order_number:{}".format(poem_id, content, order_number))
+            order_number += 1
+    cur.close()
+    db.close()
+
+
+def insert_table_poem_yi():
+    return ""
+
+
+def insert_table_poem_zhu():
+    return ""
+
+
+def insert_table_poem_shang():
+    return ""
+
 # remove_copyright()
 # update_poem_to_mysql(get_poem_ids_which_yizhushang_is_not_complete())
 # print(get_remove_copyright_poem_by_id("12f82c602c43")['yizhu'])
 # csv_to_mysql()
-# print(len(get_poem_by_id_from_mysql("000f7224659f")["zhu"]))
+
+#content = get_poem_by_id_from_mysql("ee16df5673bc")["zhu"]
+#array = remove_content_yi_zhu_shang_html_tag_and_return_array(content)
+#print(array)
+#for item in array:
+#    print(item.strip())
+
+insert_table_poem_content(get_poem_ids_from_mysql())
 
 '''
 poem_ids = get_poem_ids_which_yizhushang_is_not_complete()
