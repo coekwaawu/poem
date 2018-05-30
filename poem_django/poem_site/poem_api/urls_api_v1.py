@@ -7,7 +7,7 @@ from . import views_api_v1
 router = DefaultRouter()
 router.register('poems', views_api_v1.PoemViewSet)
 router.register('users', views_api_v1.UserViewSet)
-router.register('tags', views_api_v1.TagViewSet)
+router.register('poemtags', views_api_v1.PoemTagViewSet)
 schema_view = get_schema_view(title='Pastebin API')
 
 

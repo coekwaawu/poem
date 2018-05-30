@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'poem',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '10.139.12.168',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }

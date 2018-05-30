@@ -17,8 +17,8 @@
       <file leaf-file-name="views_api_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/views_api_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="697">
+              <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -26,50 +26,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py">
+      <file leaf-file-name="poem_tags.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_get/poem_tags.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="88" column="30" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
+            <state relative-caret-position="254">
+              <caret line="86" column="77" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="77" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/urls.py">
+      <file leaf-file-name="poem_web.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_get/poem_web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+            <state relative-caret-position="204">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="26" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="806">
-              <caret line="165" column="48" lean-forward="true" selection-start-line="120" selection-end-line="165" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls_api_v1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="37" selection-start-column="37" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -85,60 +58,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="poem_web.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_get/poem_web.py">
+      <file leaf-file-name="poem_web_mysql.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/poem_get/poem_web_mysql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="373">
+              <caret line="429" column="48" lean-forward="true" selection-start-line="429" selection-start-column="48" selection-end-line="429" selection-end-column="48" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="poem_web_mysql.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/poem_get/poem_web_mysql.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="219" column="37" lean-forward="true" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#393#1338#0" />
-                <element signature="e#508#1323#0" />
-                <element signature="e#583#1323#0" />
-                <element signature="e#589#831#0" />
-                <element signature="e#1129#1233#0" />
-                <element signature="e#1285#1323#0" />
-                <element signature="e#1376#1721#0" />
-                <element signature="e#1513#1626#0" />
-                <element signature="e#1768#2558#0" />
-                <element signature="e#1911#2463#0" />
-                <element signature="e#2001#2463#0" />
-                <element signature="e#2008#2432#0" />
-                <element signature="e#2601#4037#0" />
-                <element signature="e#3809#4006#0" />
-                <element signature="e#4068#5879#0" />
-                <element signature="e#4168#5804#0" />
-                <element signature="e#4290#5804#0" />
-                <element signature="e#4703#4905#0" />
-                <element signature="e#5481#5607#0" />
-                <element signature="e#5659#5776#0" />
-                <element signature="e#5939#6638#0" />
-                <element signature="e#5945#6348#0" />
-                <element signature="e#6430#6543#0" />
-                <element signature="e#6692#7148#0" />
-                <element signature="e#6881#7009#1" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_scrapy/models.py">
+        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="504">
+              <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="permissions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/permissions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -175,6 +150,10 @@
       <find>poems</find>
       <find>rest_framework_</find>
       <find>rest_framework_docs</find>
+      <find>tag_id</find>
+      <find>tag</find>
+      <find>Tag</find>
+      <find>get_detailpage_poem_tags_by_id</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -183,9 +162,10 @@
       <dir>D:\Desktop\PythonProject\poem\poem_django\poem_site</dir>
       <dir>D:\Desktop\PythonProject\poem\poem_django\poem_site\poem_api</dir>
       <dir>C:\ProgramData\Anaconda3\Lib\site-packages\rest_framework_docs</dir>
-      <dir>D:\Desktop\PythonProject\poem</dir>
       <dir>D:\Desktop\MyPython\poem\poem_django\poem_site</dir>
       <dir>D:\python_django\poem</dir>
+      <dir>D:\Desktop\PythonProject\poem\poem_django</dir>
+      <dir>D:\Desktop\PythonProject\poem</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -200,24 +180,25 @@
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/permissions.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1_backup.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/apps.py" />
-        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1.py" />
         <option value="C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework_docs/api_docs.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/apps/core/pagination.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/apps/core/orderfilter.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/apps/core/orderingfilter.py" />
         <option value="$PROJECT_DIR$/baidu-aip/AipOcr.py" />
-        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/views_api_v1.py" />
-        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/admin.py" />
-        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py" />
-        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_site/urls.py" />
         <option value="$PROJECT_DIR$/poem_django/poem_site/poem_scrapy/models.py" />
+        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1.py" />
+        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/views_api_v1.py" />
+        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py" />
+        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py" />
+        <option value="$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py" />
+        <option value="$PROJECT_DIR$/poem_get/poem_tags.py" />
         <option value="$PROJECT_DIR$/poem_get/poem_web_mysql.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
@@ -251,7 +232,14 @@
               <item name="poem" type="462c0819:PsiDirectoryNode" />
               <item name="poem_django" type="462c0819:PsiDirectoryNode" />
               <item name="poem_site" type="462c0819:PsiDirectoryNode" />
-              <item name="poem_scrapy" type="462c0819:PsiDirectoryNode" />
+              <item name="poem_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poem" type="462c0819:PsiDirectoryNode" />
+              <item name="poem_django" type="462c0819:PsiDirectoryNode" />
+              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
+              <item name="poem_site" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poem" type="b2602c69:ProjectViewProjectNode" />
@@ -269,6 +257,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="ql&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -361,14 +350,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115625" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5010593" side_tool="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5015625" side_tool="true" weight="0.24867162" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894068" visible="true" weight="0.24867162" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984375" visible="true" weight="0.24867162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -387,7 +378,6 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
     </layout>
@@ -396,13 +386,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/permissions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -473,20 +456,6 @@
     </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework/generics.py" />
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/migrations/0001_initial.py" />
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework/__init__.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/django/template/response.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework/fields.py" />
@@ -519,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/permissions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework/viewsets.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/django/template/loader.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/rest_framework/templates/rest_framework/filters/ordering.html" />
@@ -539,12 +501,6 @@
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_poem.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1_backup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -552,22 +508,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/django/contrib/admin/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_scrapy/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="102">
           <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -575,27 +535,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_poem.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/permissions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/views_api_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="697">
+          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/urls_api_v1.py">
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="37" selection-start-column="37" selection-end-column="37" />
+        <state relative-caret-position="238">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py">
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="88" column="30" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
+        <state relative-caret-position="504">
+          <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -603,6 +596,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_site/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_get/poem_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="86" column="77" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poem_get/poem_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,61 +632,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="165" column="48" lean-forward="true" selection-start-line="120" selection-end-line="165" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poem_django/poem_site/poem_scrapy/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poem_get/poem_web.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poem_get/poem_web_mysql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="219" column="37" lean-forward="true" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
+        <state relative-caret-position="373">
+          <caret line="429" column="48" lean-forward="true" selection-start-line="429" selection-start-column="48" selection-end-line="429" selection-end-column="48" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#393#1338#0" />
-            <element signature="e#508#1323#0" />
-            <element signature="e#583#1323#0" />
-            <element signature="e#589#831#0" />
-            <element signature="e#1129#1233#0" />
-            <element signature="e#1285#1323#0" />
-            <element signature="e#1376#1721#0" />
-            <element signature="e#1513#1626#0" />
-            <element signature="e#1768#2558#0" />
-            <element signature="e#1911#2463#0" />
-            <element signature="e#2001#2463#0" />
-            <element signature="e#2008#2432#0" />
-            <element signature="e#2601#4037#0" />
-            <element signature="e#3809#4006#0" />
-            <element signature="e#4068#5879#0" />
-            <element signature="e#4168#5804#0" />
-            <element signature="e#4290#5804#0" />
-            <element signature="e#4703#4905#0" />
-            <element signature="e#5481#5607#0" />
-            <element signature="e#5659#5776#0" />
-            <element signature="e#5939#6638#0" />
-            <element signature="e#5945#6348#0" />
-            <element signature="e#6430#6543#0" />
-            <element signature="e#6692#7148#0" />
-            <element signature="e#6881#7009#1" />
           </folding>
         </state>
       </provider>

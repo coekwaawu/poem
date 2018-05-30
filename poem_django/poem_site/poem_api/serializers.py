@@ -1,30 +1,30 @@
 from rest_framework import serializers
-from poem_api.models import Poem, PoemTag, Tag
+from poem_api.models import Poem, PoemTag, PoemTagRelationship
 from django.contrib.auth.models import User
 
 
-class TagSerializer(serializers.ModelSerializer):
+class PoemTagSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Tag
+        model = PoemTag
         fields = '__all__'
 
 
 class PoemSerializer(serializers.ModelSerializer):
 
-    tags = serializers.StringRelatedField(many=True)
+    poemtags = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Poem
         fields = ('url', 'poem_id', 'title', 'dynasty', 'author', 'content', 'yi', 'zhu',
-                  'shang', 'yizhu', 'yishang', 'zhushang', 'yizhushang', 'tags', 'owner')
+                  'shang', 'yizhu', 'yishang', 'zhushang', 'yizhushang', 'poemtags', 'owner')
 
 
-class PoemTagSerializer(serializers.HyperlinkedModelSerializer):
+class PoemTagRelationshipSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = PoemTag
-        fields = ('id', 'poem_id', 'tag_id')
+        model = PoemTagRelationship
+        fields = ('id', 'poem_id', 'poem_tag_id')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
