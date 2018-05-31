@@ -4,6 +4,13 @@ import time
 from pyquery import PyQuery as pq
 
 
+def test_print_array(array):
+    i = 1
+    for item in array:
+        print("({}){}".format(i, item))
+        i += 1
+
+
 def get_target_urls(start_page_number, end_page_number):
     target_urls = ["https://www.gushiwen.org/shiwen/default_0A0A{}.aspx".format(i) for i in
                    range(start_page_number, end_page_number + 1)]
@@ -133,70 +140,66 @@ def get_listpage_poem_ids(start, end):
 
 # print(get_poem_by_id("ffc3de59f87e")["zhu"])
 
-'''
 
-def get_poem_pq_page_by_url(target_url):
-	page = requests.get(target_url).text
-	if page != '':
-		pq_page = pq(page)
-		return pq_page
-	else:
-		return None
+def get_author_id_and_name_list_urls(start, end):
+    return ["https://so.gushiwen.org/authors/default.aspx?p={}".format(i) for i in range(start, end)]
 
-def get_detailpage_poem_yi_by_id(poem_id):
-	sentences_yi = []
-	reference_yi_list = []
-	target_url = "https://so.gushiwen.org/shiwen2017/ajaxshiwencont.aspx?id={}&value=yi".format(poem_id)
-	pq_page = get_poem_pq_page_by_url(target_url)
-	if pq_page is not None:
-		yi_list = pq_page("p")
-		for item in yi_list:
-			sentence_yi = {"sentence":"","yi":""}
-			if pq(item).attr("style") is None:
-				sentence_yi["sentence"] = pq(item)("p")[0].text
-				sentence_yi["yi"] = pq(item)("span")[0].text
-				sentences_yi.append(sentence_yi)
-			else:
-				reference_yi = item.text
 
-		div = pq_page("div div")
-		if pq(div).attr("style") is not None:
-			for item in div:
-				reference_yi_list.append(pq(item).text())
+def get_author_id_and_name_list_from_web(url):
+    id_and_name_list = []
+    page = requests.get(url)
+    pq_page = pq(page.text)(".main3 .left")
+    pattern = "<a target=\"_blank\" style=\"font-size:18px; line-height:22px; height:22px;\" " \
+              "href=\"/authorv_(.+?).aspx\"><b>(.+?)</b></a>"
+    temp_list = re.findall(pattern, pq_page.html())
+    for item in temp_list:
+        id_and_name_list.append(item)
+    print("网上获取作者id和姓名成功！{}".format(id_and_name_list))
+    page.close()
+    return id_and_name_list
 
-		poem_yi = {"poem_id":poem_id,"sentences_yi":sentences_yi,"reference_yi":reference_yi,"reference_yi_list":reference_yi_list}
-		return poem_yi
 
-def get_detailpage_poem_zhu_by_id(poem_id):
-	sentences_zhu = []
-	reference_zhu_list = []
-	target_url = "https://so.gushiwen.org/shiwen2017/ajaxshiwencont.aspx?id={}&value=zhu".format(poem_id)
-	pq_page = get_poem_pq_page_by_url(target_url)
-	if pq_page is not None:
-		zhu_list = pq_page("div p")
-		for item in zhu_list:
-			sentence_zhu = {"sentence_include_pinyin":"","zhu":""}
-			if pq(item).attr("style") is None:
-				sentence_include_pinyin_pattern = re.compile(r'(.+?)<br/>')
-				sentence_zhu["sentence_include_pinyin"] = re.findall(sentence_include_pinyin_pattern,pq(item).html())[0]
-				sentence_zhu["zhu"] = pq(pq(item)('span')).text()
-				sentences_zhu.append(sentence_zhu)
-		reference_zhu = pq_page("p").eq(-1).text()
-		div = pq_page("div div")
-		if pq(div).attr("style") is not None:
-			for item in div:
-				reference_zhu_list.append(pq(item).text())
-		poem_zhu = {"poem_id":poem_id,"sentences_zhu":sentences_zhu,"reference_zhu":reference_zhu,"reference_zhu_list":reference_zhu_list}
-		return poem_zhu
+def get_author_info_jianjie_by_id(poem_author_id="7ab3b8200774"):
+    url = "https://so.gushiwen.org/authorv_{}.aspx".format(poem_author_id)
+    page = requests.get(url)
+    pq_page = pq(page.text)(".main3 .left")
+    pattern_jianjie = "<p style=\" margin:0px;\">(.+?)<a href=\"/authors/authorvsw_"
+    jianjie = re.findall(pattern_jianjie, pq_page.html())[0]
+    page.close()
+    return jianjie
 
-def get_detailpage_poem_shang_by_id(poem_id):
-	poem_shang = []
-	target_url = "https://so.gushiwen.org/shiwen2017/ajaxshiwencont.aspx?id={}&value=shang".format(poem_id)
-	pq_page = get_poem_pq_page_by_url(target_url)
-	if pq_page is not None:
-		shang_list_pattern = re.compile(r'<div class=\"hr\"/>(.+?)')
-		shang_list = re.findall(shang_list_pattern,pq_page.html())
-		return shang_list
-	return poem_shang
 
-'''
+def get_author_info_ziliao_ids_by_poem_author_id(poem_author_id="7ab3b8200774"):
+    url = "https://so.gushiwen.org/authorv_{}.aspx".format(poem_author_id)
+    page = requests.get(url)
+    pq_page = pq(page.text)(".main3 .left")
+    pattern_ziliao = "\"fanyiquan(.+?)\""
+    ziliao_ids = re.findall(pattern_ziliao, pq_page.html())
+    return ziliao_ids
+
+
+def get_poem_author_ziliao_by_ziliao_id(id):
+    url = "https://so.gushiwen.org/authors/ajaxziliao.aspx?id={}".format(id)
+    page = requests.get(url)
+    pq_page = pq(page.text)
+    ziliao = remove_copyright_string(pq_page.html())
+    level1_pattern = "<h2><span style=\"float:left;\">(.+?)</span></h2>"
+    level1 = re.findall(level1_pattern, ziliao)
+    level2_pattern = "<strong>(.+?)<br/></strong>"
+    level2 = re.findall(level2_pattern, ziliao)
+    level3_pattern = "<p><strong>(.+?)<br/></strong>(.+?)</p>|<p>(.+?)</p>"
+    html_pattern = "<a.+?>|</a>"
+    level3 = re.findall(level3_pattern, re.sub(html_pattern, "", ziliao))
+    ziliao = level3
+    page.close()
+    return ziliao
+
+
+def get_author_info_ziliao_list_by_poem_author_id(poem_author_id="7ab3b8200774"):
+    return ""
+
+
+#print(get_author_id_and_name_list_from_web())
+print(get_author_info_ziliao_ids_by_poem_author_id())
+test_print_array(get_poem_author_ziliao_by_ziliao_id('1379'))
+#print(get_author_info_ziliao_list_by_id())

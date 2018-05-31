@@ -1,9 +1,18 @@
 import MySQLdb
 import time
 import re
+from poem_web_csv import get_poem_from_csv
 from poem_web import get_remove_copyright_poem_by_id
 from poem_web import remove_copyright_string
-from poem_web_csv import get_poem_from_csv
+from poem_web import get_author_id_and_name_list_from_web
+from poem_web import get_author_id_and_name_list_urls
+
+
+def test_print_array(array):
+    i = 1
+    for item in array:
+        print("({}){}".format(i, item))
+        i += 1
 
 
 def get_mysql_db():
@@ -414,26 +423,54 @@ def insert_table_poem_shang(poem_ids):
     db.close()
 
 
-# remove_copyright()
-# update_poem_to_mysql(get_poem_ids_which_yizhushang_is_not_complete())
-# print(get_remove_copyright_poem_by_id("12f82c602c43")['yizhu'])
-# csv_to_mysql()
+def init_table_poem_author():
+    db = get_mysql_db()
+    cur = db.cursor()
+    urls = get_author_id_and_name_list_urls(1, 355)
+    for url in urls:
+        id_and_name_list = get_author_id_and_name_list_from_web(url)
+        for item in id_and_name_list:
+            sql = "INSERT INTO poem_author(poem_author_id, name) VALUES (\'{}\', \'{}\')".format(item[0], item[1])
+            try:
+                cur.execute(sql)
+                db.commit()
+                print("Insert into poem_author success!Author id:{},author name:{}".format(item[0], item[1]))
+            except Exception as e:
+                db.rollback()
+                print("插入作者表失败!id:{},姓名:{},错误信息:{}".format(item[0], item[1], e))
+    cur.close()
+    db.close()
 
-'''
-content = get_poem_by_id_from_mysql("ee16df5673bc")["yi"]
-array = remove_content_yi_zhu_shang_html_tag_and_return_array(content)
-#print(array)
-for item in array:
-    print(item.strip())
-'''
 
+def get_poem_author_ids():
+    db = get_mysql_db()
+    cur = db.cursor()
+    sql = "SELECT poem_author_id FROM poem_author"
+    ids = []
+    try:
+        cur.execute(sql)
+        results = cur.fetchall()
+        for result in results:
+            ids.append(result[0])
+    except Exception as e:
+        print("获取作者id失败!错误信息:{}".format(e))
+    cur.close()
+    db.close()
+    return ids
+
+
+def init_poem_author_info():
+    return ""
+
+
+#remove_copyright()
+#update_poem_to_mysql(get_poem_ids_which_yizhushang_is_not_complete())
+#csv_to_mysql()
 #insert_table_poem_yi(get_poem_ids_from_mysql())
-insert_table_poem_zhu(get_poem_ids_from_mysql())
+#insert_table_poem_zhu(get_poem_ids_from_mysql())
+#insert_table_poem_shang(get_poem_ids_from_mysql())
 #insert_table_poem_content(get_poem_ids_from_mysql())
+#init_table_poem_author()
 
-'''
-poem_ids = get_poem_ids_which_yizhushang_is_not_complete()
-for poem_id in poem_ids:
-	print(poem_id)
-print(len(poem_ids))
-'''
+
+test_print_array(get_poem_author_ids())
