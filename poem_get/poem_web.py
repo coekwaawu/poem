@@ -5,6 +5,8 @@ from pyquery import PyQuery as pq
 
 
 def test_print_array(array):
+    if array is None:
+        return None
     i = 1
     for item in array:
         print("({}){}".format(i, item))
@@ -138,9 +140,6 @@ def get_listpage_poem_ids(start, end):
     return poem_ids
 
 
-# print(get_poem_by_id("ffc3de59f87e")["zhu"])
-
-
 def get_author_id_and_name_list_urls(start, end):
     return ["https://so.gushiwen.org/authors/default.aspx?p={}".format(i) for i in range(start, end)]
 
@@ -159,7 +158,7 @@ def get_author_id_and_name_list_from_web(url):
     return id_and_name_list
 
 
-def get_author_info_jianjie_by_id(poem_author_id="7ab3b8200774"):
+def get_author_info_jianjie_by_id(poem_author_id):
     url = "https://so.gushiwen.org/authorv_{}.aspx".format(poem_author_id)
     page = requests.get(url)
     pq_page = pq(page.text)(".main3 .left")
@@ -169,7 +168,7 @@ def get_author_info_jianjie_by_id(poem_author_id="7ab3b8200774"):
     return jianjie
 
 
-def get_author_info_ziliao_ids_by_poem_author_id(poem_author_id="7ab3b8200774"):
+def get_author_info_ziliao_ids_by_poem_author_id(poem_author_id):
     url = "https://so.gushiwen.org/authorv_{}.aspx".format(poem_author_id)
     page = requests.get(url)
     pq_page = pq(page.text)(".main3 .left")
@@ -178,28 +177,80 @@ def get_author_info_ziliao_ids_by_poem_author_id(poem_author_id="7ab3b8200774"):
     return ziliao_ids
 
 
-def get_poem_author_ziliao_by_ziliao_id(id):
+def get_poem_author_ziliao_by_ziliao_id(id, poem_author_id):
     url = "https://so.gushiwen.org/authors/ajaxziliao.aspx?id={}".format(id)
-    page = requests.get(url)
-    pq_page = pq(page.text)
+    try:
+        page = requests.get(url)
+        pq_page = pq(page.text)
+    except Exception as e:
+        return None
     ziliao = remove_copyright_string(pq_page.html())
     level1_pattern = "<h2><span style=\"float:left;\">(.+?)</span></h2>"
-    level1 = re.findall(level1_pattern, ziliao)
-    level2_pattern = "<strong>(.+?)<br/></strong>"
-    level2 = re.findall(level2_pattern, ziliao)
-    level3_pattern = "<p><strong>(.+?)<br/></strong>(.+?)</p>|<p>(.+?)</p>"
+    level1 = {"poem_author_info_level1_id": id, "poem_author_id": poem_author_id,
+              "content": re.findall(level1_pattern, ziliao)[0]}
+    level2_pattern = "<strong>(.+?)</strong>"
+    level2_sub_pattern = "<br/>"
+    level3_sub_pattern = "<strong>.+?</strong>"
+    level2_level3_pattern = "<p>(.+?)</p>"
     html_pattern = "<a.+?>|</a>"
-    level3 = re.findall(level3_pattern, re.sub(html_pattern, "", ziliao))
-    ziliao = level3
+    level_list = re.findall(level2_level3_pattern, re.sub(html_pattern, "", ziliao))
+    level2_order_number = 1
+    level3_order_number = 1
+    level2 = []
+    level3 = []
+    poem_author_info_level2_content_temp = ""
+    for level in level_list:
+        level2_temp = {"poem_author_info_level1_id": id, "content": "", "order_number": 0}
+        level3_temp = {"poem_author_info_level2_id": 0, "poem_author_info_level1_id": 0, "content": "",
+                       "order_number": 0, "poem_author_info_level2_content": ""}
+        if len(re.findall(level2_pattern, level)) > 0:
+            level2_temp["content"] = re.findall(level2_pattern, level)[0]
+            level2_temp["content"] = re.sub(level2_sub_pattern, "", level2_temp["content"])
+            level2_temp["order_number"] = level2_order_number
+            poem_author_info_level2_content_temp = level2_temp["content"]
+            level2.append(level2_temp)
+            level2_order_number += 1
+            level3_temp["content"] = re.sub(level3_sub_pattern, "", level)
+            level3_temp["order_number"] = level3_order_number
+            level3_temp["poem_author_info_level2_content"] = poem_author_info_level2_content_temp
+            level3.append(level3_temp)
+            level3_order_number += 1
+        else:
+            level3_temp["content"] = level
+            level3_temp["order_number"] = level3_order_number
+            level3_temp["poem_author_info_level2_content"] = poem_author_info_level2_content_temp
+            level3_temp["poem_author_info_level1_content"] = id
+            level3.append(level3_temp)
+            level3_order_number += 1
+    if len(level2) == 0 and len(level3) == 0:
+        ziliao_temp = pq(ziliao)(".contyishang").html()
+        sub_pattern = "<h2>.+?</h2>|<a title.+?</a>"
+        ziliao_temp = re.sub(sub_pattern, "", ziliao_temp)
+        level3_temp = {"poem_author_info_level2_id": 0, "poem_author_info_level1_id": 0, "content": "",
+                       "order_number": 0, "poem_author_info_level2_content": ""}
+        level3_temp["content"] = pq(ziliao_temp).text()
+        level3_temp["order_number"] = level3_order_number
+        level3_temp["poem_author_info_level1_id"] = id
+        level3.append(level3_temp)
+    ziliao = {"level1": level1, "level2": level2, "level3": level3}
     page.close()
     return ziliao
 
 
-def get_author_info_ziliao_list_by_poem_author_id(poem_author_id="7ab3b8200774"):
-    return ""
+def get_author_info_ziliao_list_by_poem_author_id(poem_author_id):
+    ziliao_ids = get_author_info_ziliao_ids_by_poem_author_id(poem_author_id)
+    ziliao_list = []
+    for ziliao_id in ziliao_ids:
+        ziliao = get_poem_author_ziliao_by_ziliao_id(ziliao_id, poem_author_id)
+        if ziliao is not None:
+            ziliao_list.append(ziliao)
+    return ziliao_list
+
 
 
 #print(get_author_id_and_name_list_from_web())
-print(get_author_info_ziliao_ids_by_poem_author_id())
-test_print_array(get_poem_author_ziliao_by_ziliao_id('1379'))
+#rint(get_author_info_ziliao_ids_by_poem_author_id())
+#test_print_array(get_poem_author_ziliao_by_ziliao_id('1379'))
+#test_print_array(get_author_info_ziliao_list_by_poem_author_id("7ab3b8200774"))
+#print(get_poem_author_ziliao_by_ziliao_id('1379'))
 #print(get_author_info_ziliao_list_by_id())

@@ -6,7 +6,12 @@ from poem_web import get_remove_copyright_poem_by_id
 from poem_web import remove_copyright_string
 from poem_web import get_author_id_and_name_list_from_web
 from poem_web import get_author_id_and_name_list_urls
+from poem_web import get_author_info_ziliao_list_by_poem_author_id
 
+def print_error(str):
+    print('\033[1;31m')
+    print(str)
+    print('\033[0m')
 
 def test_print_array(array):
     i = 1
@@ -458,9 +463,90 @@ def get_poem_author_ids():
     db.close()
     return ids
 
+def get_poem_author_name_by_id(id):
+    db = get_mysql_db()
+    cur = db.cursor()
+    sql = "SELECT name FROM poem_author WHERE poem_author_id = \'{}\'".format(id)
+    cur.execute(sql)
+    name = cur.fetchone()[0]
+    cur.close()
+    db.close()
+    return name
 
 def init_poem_author_info():
-    return ""
+    db = get_mysql_db()
+    cur = db.cursor()
+    for author_id in get_poem_author_ids():
+        poem_author_name = get_poem_author_name_by_id(author_id)
+        ziliao_list = get_author_info_ziliao_list_by_poem_author_id(author_id)
+        for ziliao in ziliao_list:
+            level1 = ziliao["level1"]
+            level2_list = ziliao["level2"]
+            level3_list = ziliao["level3"]
+            sql_level1 = "INSERT INTO poem_author_info_level1(poem_author_info_level1_id,poem_author_id,content) " \
+                         "VALUES(\'{}\',\'{}\',\'{}\')"\
+                .format(level1["poem_author_info_level1_id"], level1["poem_author_id"], level1["content"])
+            try:
+                cur.execute(sql_level1)
+                db.commit()
+                print("Level1 init success!Author name:{},Level1 content:{}"
+                      .format(poem_author_name, level1["content"]))
+            except Exception as e:
+                db.rollback()
+                print_error("初始化level1失败！错误信息：{}".format(e))
+            for level2 in level2_list:
+                if len(level2) > 0:
+                    sql_level2 = "INSERT INTO poem_author_info_level2(poem_author_info_level1_id,content,order_number) " \
+                                 "VALUES(\'{}\',\'{}\',\'{}\')"\
+                        .format(level2["poem_author_info_level1_id"], level2["content"], level2["order_number"])
+                    try:
+                        cur.execute(sql_level2)
+                        db.commit()
+                        print("Level2 init success!Author name:{},Level2 content:{}"
+                              .format(poem_author_name, level2["content"]))
+                    except Exception as e:
+                        db.rollback()
+                        print_error("初始化level2失败！错误信息：{}".format(e))
+            for level3 in level3_list:
+                if level3["poem_author_info_level2_content"] != '' and level3["content"] != '':
+                    level3["content"] = re.sub("<br/>", "", level3["content"])
+                    level3["content"] = re.sub("'", "\'", level3["content"])
+                    sql_query_level2_id = "SELECT poem_author_info_level2_id FROM poem_author_info_level2 WHERE " \
+                                          "content = \'{}\'".format(level3["poem_author_info_level2_content"])
+                    level2_id = 0
+                    try:
+                        cur.execute(sql_query_level2_id)
+                        level2_id = cur.fetchone()[0]
+                    except Exception as e:
+                        print_error(e)
+                    level3["poem_author_info_level2_id"] = level2_id
+                    sql_level3 = "INSERT INTO poem_author_info_level3(poem_author_info_level2_id" \
+                                 ",poem_author_info_level1_id,content,order_number) VALUES(\'{}\',\'{}\',\'{}\',\'{}\')" \
+                        .format(level3["poem_author_info_level2_id"], level3["poem_author_info_level1_id"]
+                                , level3["content"], level3["order_number"])
+                    try:
+                        cur.execute(sql_level3)
+                        db.commit()
+                        print("Level3 init success!Author name:{},Level3 content:{}"
+                              .format(poem_author_name, level3["content"]))
+                    except Exception as e:
+                        db.rollback()
+                        print_error("初始化level3失败！错误信息：{}".format(e))
+                else:
+                    sql_level3 = "INSERT INTO poem_author_info_level3(poem_author_info_level2_id" \
+                                 ",poem_author_info_level1_id,content,order_number) VALUES(\'{}\',\'{}\',\'{}\',\'{}\')" \
+                        .format(level3["poem_author_info_level2_id"], level3["poem_author_info_level1_id"]
+                                , level3["content"], level3["order_number"])
+                    try:
+                        cur.execute(sql_level3)
+                        db.commit()
+                        print("Level3 init success!Author name:{},Level3 content:{}"
+                              .format(poem_author_name, level3["content"]))
+                    except Exception as e:
+                        db.rollback()
+                        print_error("初始化level3失败！错误信息：{}".format(e))
+    cur.close()
+    db.close()
 
 
 #remove_copyright()
@@ -471,6 +557,5 @@ def init_poem_author_info():
 #insert_table_poem_shang(get_poem_ids_from_mysql())
 #insert_table_poem_content(get_poem_ids_from_mysql())
 #init_table_poem_author()
-
-
-test_print_array(get_poem_author_ids())
+#test_print_array(get_author_info_ziliao_list_by_poem_author_id())
+init_poem_author_info()
