@@ -473,6 +473,11 @@ def get_poem_author_name_by_id(id):
     db.close()
     return name
 
+
+def init_poem_author_info_level1(author_id):
+    ziliao_list = get_author_info_ziliao_list_by_poem_author_id(author_id)
+
+
 def init_poem_author_info():
     db = get_mysql_db()
     cur = db.cursor()
@@ -490,7 +495,7 @@ def init_poem_author_info():
                 cur.execute(sql_level1)
                 db.commit()
                 print("Level1 init success!Author name:{},Level1 content:{}"
-                      .format(poem_author_name, level1["content"]))
+                      .format(author_id, level1["content"]))
             except Exception as e:
                 db.rollback()
                 print_error("初始化level1失败！错误信息：{}".format(e))
@@ -503,14 +508,14 @@ def init_poem_author_info():
                         cur.execute(sql_level2)
                         db.commit()
                         print("Level2 init success!Author name:{},Level2 content:{}"
-                              .format(poem_author_name, level2["content"]))
+                              .format(author_id, level2["content"]))
                     except Exception as e:
                         db.rollback()
                         print_error("初始化level2失败！错误信息：{}".format(e))
             for level3 in level3_list:
+                level3["content"] = re.sub("<br/>", "", level3["content"])
+                level3["content"] = re.sub("'", "‘", level3["content"])
                 if level3["poem_author_info_level2_content"] != '' and level3["content"] != '':
-                    level3["content"] = re.sub("<br/>", "", level3["content"])
-                    level3["content"] = re.sub("'", "\'", level3["content"])
                     sql_query_level2_id = "SELECT poem_author_info_level2_id FROM poem_author_info_level2 WHERE " \
                                           "content = \'{}\'".format(level3["poem_author_info_level2_content"])
                     level2_id = 0
@@ -527,8 +532,8 @@ def init_poem_author_info():
                     try:
                         cur.execute(sql_level3)
                         db.commit()
-                        print("Level3 init success!Author name:{},Level3 content:{}"
-                              .format(poem_author_name, level3["content"]))
+                        print("Level3 init success!Author name:{}"
+                              .format(author_id))
                     except Exception as e:
                         db.rollback()
                         print_error("初始化level3失败！错误信息：{}".format(e))
@@ -540,11 +545,11 @@ def init_poem_author_info():
                     try:
                         cur.execute(sql_level3)
                         db.commit()
-                        print("Level3 init success!Author name:{},Level3 content:{}"
-                              .format(poem_author_name, level3["content"]))
+                        print("Level3 init success!Author name:{}"
+                              .format(author_id))
                     except Exception as e:
                         db.rollback()
-                        print_error("初始化level3失败！错误信息：{}".format(e))
+                        print_error("level3失败！错误信息：{}".format(e))
     cur.close()
     db.close()
 

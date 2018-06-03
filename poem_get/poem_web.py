@@ -190,7 +190,7 @@ def get_poem_author_ziliao_by_ziliao_id(id, poem_author_id):
               "content": re.findall(level1_pattern, ziliao)[0]}
     level2_pattern = "<strong>(.+?)</strong>"
     level2_sub_pattern = "<br/>"
-    level3_sub_pattern = "<strong>.+?</strong>"
+    level3_sub_pattern = "<strong>.+?</strong>|<a title.+?</a>"
     level2_level3_pattern = "<p>(.+?)</p>"
     html_pattern = "<a.+?>|</a>"
     level_list = re.findall(level2_level3_pattern, re.sub(html_pattern, "", ziliao))
@@ -216,7 +216,7 @@ def get_poem_author_ziliao_by_ziliao_id(id, poem_author_id):
             level3.append(level3_temp)
             level3_order_number += 1
         else:
-            level3_temp["content"] = level
+            level3_temp["content"] = re.sub(level3_sub_pattern, "", level)
             level3_temp["order_number"] = level3_order_number
             level3_temp["poem_author_info_level2_content"] = poem_author_info_level2_content_temp
             level3_temp["poem_author_info_level1_content"] = id
