@@ -130,7 +130,7 @@ class PoemTag(models.Model):
         return self.name
 
 
-class Poem(models.Model):
+class Poem_V1(models.Model):
     poem_id = models.CharField(primary_key=True, max_length=20)
     title = models.CharField(max_length=50, blank=True, null=True)
     dynasty = models.CharField(max_length=20, blank=True, null=True)
@@ -149,18 +149,18 @@ class Poem(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'poem'
+        db_table = 'poem_v1'
 
     def __str__(self):
         return self.title
 
 
 class PoemTagRelationship(models.Model):
-    poem = models.ForeignKey(Poem, on_delete=models.CASCADE)
+    poem = models.ForeignKey(Poem_V1, on_delete=models.CASCADE)
     poem_tag = models.ForeignKey(PoemTag, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = "poem_tag_relationship"
+        db_table = "poem_v1_tag_relationship"
 
     def __str__(self):
         return self.poem.title+'-'+self.poem_tag.name

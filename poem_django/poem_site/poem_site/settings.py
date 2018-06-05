@@ -31,7 +31,8 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 INSTALLED_APPS = [
-    'poem_api.apps.PoemAPIConfig',
+    'poem_api_v1.apps.PoemAPIConfig',
+    'poem_api_v2.apps.PoemApiV2Config',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

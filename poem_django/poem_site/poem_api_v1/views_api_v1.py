@@ -8,18 +8,16 @@ from rest_framework.decorators import api_view
 from rest_framework import renderers
 from rest_framework.decorators import action
 from rest_framework.reverse import reverse
-from rest_framework import permissions
 from rest_framework import viewsets
-from poem_api.permissions import IsOwnerOrReadOnly
-from poem_api.models import Poem
-from poem_api.models import PoemTag
-from poem_api.serializers import PoemSerializer
-from poem_api.serializers import UserSerializer
-from poem_api.serializers import PoemTagSerializer
+from .models import Poem_V1
+from .models import PoemTag
+from .serializers import PoemSerializer
+from .serializers import UserSerializer
+from .serializers import PoemTagSerializer
 
 
 class PoemViewSet(viewsets.ModelViewSet):
-    queryset = Poem.objects.all()
+    queryset = Poem_V1.objects.all()
     serializer_class = PoemSerializer
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
@@ -51,7 +49,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PoemTagViewSet(viewsets.ModelViewSet):
-    queryset = PoemTag.objects.all().annotate(number_of_poems=Count('poem'))
+    queryset = PoemTag.objects.all().annotate(number_of_poems=Count('poem_v1'))
     serializer_class = PoemTagSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     search_fields = ('name', )

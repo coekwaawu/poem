@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import renderers
-from . import views_api_v1
+from poem_django.poem_site.poem_api_v1 import views_api_v1
 from poem_api.views_api_v1 import PoemViewSet, UserViewSet, api_root
 
 

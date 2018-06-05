@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from poem_api.models import Poem, PoemTag, PoemTagRelationship
+from .models import Poem, PoemTag, PoemTagRelationship
 from django.contrib.auth.models import User
-
 
 class PoemTagSerializer(serializers.ModelSerializer):
 
@@ -28,7 +27,6 @@ class PoemTagRelationshipSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    #poems = serializers.HyperlinkedRelatedField(many=True, view_name='poem-detail', read_only=True)
 
     class Meta:
         model = User

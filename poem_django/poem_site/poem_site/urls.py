@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('api/', include('poem_api.urls_api')),
-    path('api/v1/', include('poem_api.urls_api_v1')),
-    path('api/v2/', include('drf_openapi.urls')),
-    path('poem/', include('poem_api.urls_poem')),
+    #path('api/', include('poem_api_v1.urls_api')),
+    #path('poem/', include('poem_api_v1.urls_poem')),
+    path('api/v1/', include('poem_api_v1.urls_api_v1')),
+    path('api/v2/', include('poem_api_v2.urls')),
     path('admin/', admin.site.urls),
 ]

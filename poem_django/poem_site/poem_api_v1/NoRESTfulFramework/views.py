@@ -1,43 +1,43 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from poem_api.models import Poem
-from poem_api.models import PoemTag
+from models import Poem_V1
+from models import PoemTag
 import json
 import math
 
 # Create your views here.
 def test(request):
-	template = loader.get_template('poem_api/poem_json.html')
+	template = loader.get_template('poem_api_v1/poem_json.html')
 	return HttpResponse(template.render())
 
 #127.0.0.1:8000/title/1
 def poem_id(request, poem_title):
-	return HttpResponse(Poem.objects.filter(poem_title=poem_title)[0].poem_id)
+	return HttpResponse(Poem_V1.objects.filter(poem_title=poem_title)[0].poem_id)
 
 def title(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].title)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].title)
 
 def dynasty(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].dynasty)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].dynasty)
 
 def author(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].author)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].author)
 
 def content(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].content)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].content)
 
 def yi(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].yi)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].yi)
 
 def zhu(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].zhu)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].zhu)
 
 def shang(request, poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0].shang)
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0].shang)
 
 def poem(request,poem_id):
-	return HttpResponse(Poem.objects.filter(poem_id=poem_id)[0])
+	return HttpResponse(Poem_V1.objects.filter(poem_id=poem_id)[0])
 
 #Example: 127.0.0.1:8000/api/1
 def api(request, curPage):
