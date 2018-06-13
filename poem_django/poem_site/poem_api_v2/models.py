@@ -23,8 +23,7 @@ class Poem(models.Model):
     poem_id = models.CharField(primary_key=True, max_length=20)
     title = models.CharField(max_length=50, blank=True, null=True)
     dynasty = models.CharField(max_length=20, blank=True, null=True)
-    author = models.ForeignKey(PoemAuthor, on_delete=models.CASCADE)
-    content = models.TextField(blank=True, null=True)
+    author = models.CharField(max_length=10, blank=True, null=True)
     poemtags = models.ManyToManyField(PoemTag, through='PoemTagRelationship')
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 

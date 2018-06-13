@@ -554,6 +554,26 @@ def init_poem_author_info():
     db.close()
 
 
+def temp():
+    db = get_mysql_db()
+    cur = db.cursor()
+    sql1 = "SELECT a.poem_id,b.poem_author_id FROM poem.poem_v1 AS a LEFT JOIN poem.poem_author AS b ON a.author = b.name;"
+    cur.execute(sql1);
+    results = cur.fetchall()
+    for result in results:
+        poem_id = result[0]
+        poem_author_id = result[1]
+        sql2 = "UPDATE poem.poem SET author_id = \'{}\' WHERE poem_id = \'{}\'"\
+            .format(poem_author_id, poem_id)
+        try:
+            cur.execute(sql2)
+            db.commit()
+        except Exception as e:
+            db.rollback()
+            print(e)
+    cur.close()
+    db.close()
+
 #remove_copyright()
 #update_poem_to_mysql(get_poem_ids_which_yizhushang_is_not_complete())
 #csv_to_mysql()
@@ -563,4 +583,6 @@ def init_poem_author_info():
 #insert_table_poem_content(get_poem_ids_from_mysql())
 #init_table_poem_author()
 #test_print_array(get_author_info_ziliao_list_by_poem_author_id())
-init_poem_author_info()
+#init_poem_author_info()
+
+temp()
